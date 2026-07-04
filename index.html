@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+    @page {
+      size: A4;
+      margin: 20mm 16mm 20mm 16mm;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body {
+      font-family:'IBM Plex Sans Arabic', sans-serif; direction:rtl; text-align:right;
+      color:#e8edf5; background:#0a0e14;
+      font-size:11.2pt; line-height:1.7;
+    }
+    a { color:#00E5D0; text-decoration:none; }
+    code { font-family:'JetBrains Mono',monospace; background:#0b1119;
+      padding:1px 6px; border-radius:5px; font-size:.9em; color:#00E5D0; }
+    strong { color:#00E5D0; font-weight:800; }
+
+    /* ---------- COVER ---------- */
+    .cover {
+      position:relative; height:257mm; margin:-20mm -16mm 0 -16mm;
+      background:radial-gradient(900px 600px at 80% 0%, rgba(0,229,208,.18), transparent 60%), radial-gradient(700px 500px at 0% 100%, rgba(37,99,235,.20), transparent 55%), #0a0e14; color:#fff;
+      padding:38mm 20mm; display:flex; flex-direction:column;
+      page-break-after:always; overflow:hidden;
+    }
+    .cover-kicker { font-size:13pt; letter-spacing:2px; text-transform:uppercase;
+      color:rgba(255,255,255,.85); font-weight:700; margin-bottom:14mm; }
+    .cover-kicker .dot { color:#19f0ff; }
+    .cover h1 { font-size:33pt; font-weight:900; line-height:1.25; margin-bottom:8mm;
+      color:#fff; max-width:150mm; }
+    .cover .csub { font-size:15pt; font-weight:500; color:rgba(255,255,255,.9);
+      max-width:150mm; line-height:1.6; }
+    .cover-meta { margin-top:auto; display:flex; flex-direction:column; gap:5mm; }
+    .cover-chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6mm; }
+    .cover-chip { background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.28);
+      border-radius:999px; padding:4px 14px; font-size:9.5pt; font-weight:700; color:#fff; }
+    .cover-chip.conf { background:rgba(255,255,255,.22); }
+    .cover-info { display:flex; gap:16mm; flex-wrap:wrap; }
+    .cover-info .k { font-size:9pt; text-transform:uppercase; letter-spacing:1px;
+      color:rgba(255,255,255,.7); margin-bottom:2px; }
+    .cover-info .v { font-size:12pt; font-weight:800; color:#fff; }
+    .cover-line { position:absolute; left:0; top:0; bottom:0; width:3px;
+      background:linear-gradient(180deg,#19f0ff,transparent); opacity:.6; }
+
+    /* ---------- SECTIONS ---------- */
+    h2.sec { font-size:18pt; font-weight:900; color:#00E5D0;
+      margin:9mm 0 4mm; padding-bottom:3mm; border-bottom:2px solid rgba(255,255,255,.09);
+      display:flex; align-items:center; gap:10px; page-break-after:avoid; }
+    h3.sec { font-size:13.5pt; font-weight:800; color:#e8edf5; margin:6mm 0 3mm; page-break-after:avoid; }
+    .sn { display:inline-flex; align-items:center; justify-content:center; min-width:30px; height:30px;
+      padding:0 8px; border-radius:9px; background:rgba(0,229,208,.12); border:1px solid rgba(0,229,208,.32);
+      color:#00E5D0; font-size:12pt; font-weight:900; font-family:'JetBrains Mono'; }
+    .rsec { page-break-inside:auto; }
+    p { margin:0 0 3mm; color:#e8edf5; }
+    .rl { margin:0 0 4mm; padding-right:7mm; }
+    .rl li { margin:1.5mm 0; }
+
+    /* callouts */
+    .callout { display:flex; gap:10px; padding:4mm 5mm; border-radius:12px; margin:4mm 0;
+      background:#0d1320; border:1px solid rgba(255,255,255,.09);
+      border-right:4px solid #00E5D0; page-break-inside:avoid; }
+    .callout .ci { font-size:15pt; line-height:1.2; }
+    .callout-warn { border-right-color:#ff5d6c; }
+    .callout-key { border-right-color:#ffc24b; background:rgba(0,229,208,.07); }
+    .callout-tip { border-right-color:#34e0a1; }
+
+    /* quotes */
+    blockquote { background:rgba(0,229,208,.07); border-right:4px solid #00E5D0;
+      padding:4mm 6mm; border-radius:10px; margin:4mm 0; font-style:italic; color:#e8edf5;
+      page-break-inside:avoid; }
+    .qcite { margin-top:2mm; font-style:normal; font-weight:700; color:#9aa6b8; font-size:.9em; }
+
+    /* code */
+    pre.code { background:#0b1119; border:1px solid rgba(255,255,255,.09); border-radius:10px;
+      padding:4mm 5mm; font-family:'JetBrains Mono',monospace; font-size:9.5pt; color:#19f0ff;
+      direction:ltr; text-align:left; white-space:pre-wrap; margin:4mm 0; page-break-inside:avoid; line-height:1.6; }
+
+    /* tables */
+    .tbl-wrap { margin:4mm 0; page-break-inside:avoid; }
+    table { width:100%; border-collapse:collapse; font-size:10pt; }
+    th,td { text-align:right; padding:3mm 4mm; border-bottom:1px solid rgba(255,255,255,.09); }
+    th { background:rgba(0,229,208,.12); color:#00E5D0; font-weight:800; font-size:9.5pt;
+      border-bottom:2px solid rgba(0,229,208,.32); }
+    tbody tr:nth-child(even) { background:#0d1320; }
+    .tcap { font-size:9pt; color:#9aa6b8; margin-top:2mm; text-align:center; }
+
+    /* stats */
+    .stats { display:flex; gap:4mm; flex-wrap:wrap; margin:4mm 0; }
+    .stat { flex:1; min-width:38mm; background:#0d1320; border:1px solid rgba(255,255,255,.09);
+      border-radius:12px; padding:5mm; text-align:center; page-break-inside:avoid; }
+    .stat-v { font-size:22pt; font-weight:900; color:#00E5D0; font-family:'JetBrains Mono'; line-height:1.1; }
+    .stat-l { font-size:9pt; color:#9aa6b8; margin-top:2mm; font-weight:600; }
+
+    hr.div { border:none; border-top:1px solid rgba(255,255,255,.09); margin:6mm 0; }
+    .pagebreak { page-break-after:always; }
+
+    /* key findings */
+    .kf-wrap { margin:4mm 0; }
+    .kf { display:flex; gap:10px; align-items:flex-start; background:#0d1320;
+      border:1px solid rgba(255,255,255,.09); border-radius:12px; padding:4mm 5mm; margin:2.5mm 0; page-break-inside:avoid; }
+    .kf-n { flex:none; width:26px; height:26px; border-radius:50%; background:#00E5D0;
+      color:#062; font-weight:900; display:flex; align-items:center;
+      justify-content:center; font-size:11pt; }
+    .kf-t { font-size:10.5pt; }
+
+    /* exec */
+    .exec { background:#0d1320; border:1px solid rgba(255,255,255,.09); border-radius:16px;
+      padding:6mm 7mm; margin:4mm 0 6mm; }
+    .exec-h { margin-top:0; }
+
+    /* toc */
+    .toc { page-break-after:always; }
+    .toc-row { display:flex; align-items:center; gap:8px; padding:2.5mm 0; border-bottom:1px dashed rgba(255,255,255,.09); }
+    .toc-row a { display:flex; align-items:center; gap:10px; color:#e8edf5; font-weight:600; flex:1; }
+    .toc-n { font-family:'JetBrains Mono'; font-weight:800; color:#00E5D0; min-width:34px; }
+
+    /* sources */
+    .src { display:flex; gap:10px; padding:3mm 0; border-bottom:1px solid rgba(255,255,255,.09); page-break-inside:avoid; }
+    .src-n { font-family:'JetBrains Mono'; font-weight:800; color:#00E5D0; flex:none; }
+    .src-t { font-weight:700; font-size:10.5pt; }
+    .src-u { font-family:'JetBrains Mono'; font-size:8.5pt; color:#19f0ff;
+      direction:ltr; text-align:right; word-break:break-all; }
+    .src-m { font-size:9pt; color:#9aa6b8; }
+    
+    /* ===== RESPONSIVE WEB MODE ===== */
+    @page { margin:0; }
+    html { scroll-behavior:smooth; }
+    body { font-size:17px; line-height:1.85; max-width:860px; margin:0 auto;
+      padding:0 20px 80px; background:#0a0e14; }
+    .cover { height:auto; min-height:auto; margin:0 -20px 30px; padding:64px 32px 56px;
+      page-break-after:auto; border-radius:0 0 28px 28px; }
+    .cover h1 { font-size:clamp(26px,6vw,44px); max-width:100%; }
+    .cover .csub { font-size:clamp(15px,3.6vw,19px); max-width:100%; }
+    .cover-kicker { margin-bottom:32px; }
+    .cover-meta { margin-top:40px; }
+    h2.sec { font-size:clamp(20px,4.6vw,26px); margin:36px 0 16px; padding-bottom:12px; scroll-margin-top:16px; }
+    h3.sec { font-size:clamp(17px,3.8vw,20px); margin:24px 0 12px; }
+    .sn { min-width:36px; height:36px; font-size:16px; }
+    p { margin:0 0 14px; }
+    .rl { padding-right:22px; margin-bottom:16px; }
+    .rl li { margin:8px 0; }
+    .callout { padding:16px 18px; margin:18px 0; border-radius:14px; }
+    .callout .ci { font-size:22px; }
+    blockquote { padding:16px 20px; margin:18px 0; }
+    pre.code { padding:16px 18px; font-size:14px; margin:18px 0; overflow-x:auto; }
+    .tbl-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; margin:18px 0; }
+    table { font-size:15px; min-width:100%; }
+    th,td { padding:12px 14px; }
+    .stats { gap:14px; margin:18px 0; }
+    .stat { min-width:120px; padding:20px 16px; border-radius:16px; }
+    .stat-v { font-size:32px; }
+    .stat-l { font-size:13px; }
+    .exec { padding:24px 26px; margin:20px 0 30px; border-radius:20px; }
+    .kf { padding:16px 18px; margin:10px 0; border-radius:14px; }
+    .kf-n { width:32px; height:32px; font-size:15px; }
+    .kf-t { font-size:16px; }
+    .toc { page-break-after:auto; }
+    .toc-row { padding:12px 0; }
+    .src { padding:14px 0; }
+    .src-t { font-size:16px; }
+    .src-u { font-size:12px; }
+    /* reading progress bar */
+    #progress { position:fixed; top:0; right:0; height:4px; width:0%;
+      background:linear-gradient(90deg,#00E5D0,#19f0ff);
+      z-index:999; transition:width .1s ease; box-shadow:0 0 10px #00E5D0; }
+    /* back-to-top */
+    #totop { position:fixed; bottom:22px; left:22px; width:46px; height:46px;
+      border-radius:50%; background:#00E5D0; color:#062;
+      border:none; font-size:22px; cursor:pointer; display:none; align-items:center; justify-content:center;
+      box-shadow:0 6px 20px rgba(0,0,0,.35); z-index:998; }
+    @media (max-width:600px) {
+      .cover { padding:48px 22px 40px; }
+      .cover-info { gap:20px; }
+      .stats { flex-direction:column; }
+    }
+    /* theme toggle button */
+    #themebtn { position:fixed; top:14px; left:14px; z-index:1000;
+      background:rgba(127,127,127,.18); border:1px solid rgba(127,127,127,.35); color:#fff;
+      backdrop-filter:blur(8px); border-radius:999px; padding:8px 16px; font-size:14px;
+      font-weight:700; cursor:pointer; font-family:inherit; }
+    
+    /* ===== ALT THEME (toggled) ===== */
+    [data-theme="alt"] body { background:#ffffff; color:#14202e; }
+    [data-theme="alt"] p, [data-theme="alt"] .kf-t, [data-theme="alt"] li { color:#14202e; }
+    [data-theme="alt"] h2.sec { color:#0b3d91; border-bottom-color:#dde5ee; }
+    [data-theme="alt"] h3.sec { color:#14202e; }
+    [data-theme="alt"] strong { color:#0b3d91; }
+    [data-theme="alt"] a, [data-theme="alt"] .sn, [data-theme="alt"] .toc-n,
+    [data-theme="alt"] .src-n, [data-theme="alt"] .stat-v { color:#1e5fbf; }
+    [data-theme="alt"] .cover { background:linear-gradient(135deg, #0b3d91 0%, #1e5fbf 55%, #2f80ed 100%); }
+    [data-theme="alt"] .exec, [data-theme="alt"] .stat, [data-theme="alt"] .kf,
+    [data-theme="alt"] .callout { background:#f7fafd; border-color:#dde5ee; }
+    [data-theme="alt"] blockquote { background:#eef4fc; border-inline-start-color:#1e5fbf; }
+    [data-theme="alt"] pre.code { background:#f2f5f9; border-color:#dde5ee;
+      color:#0b3d91; }
+    [data-theme="alt"] th { background:#eaf1fc; color:#1e5fbf; border-bottom-color:#c3d8f5; }
+    [data-theme="alt"] td { border-bottom-color:#dde5ee; }
+    [data-theme="alt"] tbody tr:nth-child(even) { background:#f7fafd; }
+    [data-theme="alt"] .sn { background:#eaf1fc; border-color:#c3d8f5; }
+    [data-theme="alt"] .kf-n { background:#1e5fbf; color:#fff; }
+    [data-theme="alt"] .muted, [data-theme="alt"] .src-m, [data-theme="alt"] .stat-l { color:#5b6b7d; }
+    </style></head>
+<body>
+  <div class="cover">
+    <div class="cover-line"></div>
+    <div class="cover-kicker">تقرير بحثي معمّق <span class="dot">◆</span></div>
+    <h1>SAT جوّه مصر والمجموع العالي: تحقيق</h1>
+    <div class="csub">هل بيمتحنوا SAT جوّه مصر ويدخلوا حكومي؟ وهل المجموع العالي بيضمن الحكومي؟ — تحقيق موثّق (2025/2026)</div>
+    <div class="cover-meta">
+      <div class="cover-chips"><span class="cover-chip">SAT في مصر</span><span class="cover-chip">الشهادات المعادلة</span><span class="cover-chip">الكوتة 5%</span><span class="cover-chip">الطب الحكومي</span><span class="cover-chip">التنسيق</span><span class="cover-chip">تحقيق</span><span class="cover-chip conf">مستوى الثقة: عالية</span></div>
+      <div class="cover-info">
+        <div><div class="k">إعداد</div><div class="v">إسلام — Deep Research</div></div>
+        <div><div class="k">التاريخ</div><div class="v">2026-07-04</div></div>
+      </div>
+    </div>
+  </div>
+  
+        <section class="exec">
+          <h2 class="sec exec-h">الملخص التنفيذي</h2>
+          <p>التقرير ده تحقيق دقيق (fact-check) في سؤالين محددين سألتهم يا محمود: <strong>هل فيه ناس بتمتحن SAT جوّه مصر وتدخل حكومي؟</strong> و<strong>هل كل اللي بيجيب مجموع عالي مبيدخلش حكومي؟</strong> — والإجابة على الاتنين <strong>صحّحت مفاهيم شائعة غلط</strong>.</p><p><strong>السؤال الأول — النتيجة صادمة شوية:</strong> المقولة المنتشرة إن 'SAT ممنوع جوّه مصر ولازم EST' <strong>بقت قديمة</strong>. الحقيقة: SAT كان متوقف فعلًا من 2020 لـ 2024 (بسبب تسريبات)، بس <strong>رجع رسميًا في يونيو 2025</strong> كـ Digital SAT في مراكز اختبار جوّه مصر، وأكّدته السفارة الأمريكية بالقاهرة ووزارة التعليم. ومقبول رسميًا للجامعات الحكومية عن طريق التنسيق.</p><p><strong>السؤال الثاني — الادعاء صح بس محتاج تدقيق:</strong> آه، بيحصل رفض فعلي لطلاب دبلومة بمجموع عالي من كليات القمة الحكومية — <strong>بس مش لأن الدرجة بتتجاهل</strong>. السبب إن المقاعد محدودة بـ <strong>5% فقط</strong> لكل كلية، والقبول جواها <strong>بالترتيب التنازلي للمجموع</strong>، فبتخلص المقاعد في اللي أعلى منك. حتى 1560+ في EST ممكن ميكفيش لطب القاهرة الحكومي.</p>
+          <div class="kf-wrap"><div class="kf"><div class="kf-n">1</div><div class="kf-t">SAT رجع رسميًا جوّه مصر يونيو 2025 (Digital SAT) بعد توقف 2020-2024 — مقولة 'ممنوع في مصر' بقت قديمة.</div></div><div class="kf"><div class="kf-n">2</div><div class="kf-t">SAT مقبول رسميًا للجامعات الحكومية عبر التنسيق، وهو الأساس اللي بيتحسب عليه المجموع الاعتباري.</div></div><div class="kf"><div class="kf-n">3</div><div class="kf-t">دلوقتي مش EST بس — عندك SAT + EST + ACT، التلاتة معتمدين رسميًا (مع شرط GPA).</div></div><div class="kf"><div class="kf-n">4</div><div class="kf-t">الكوتة 5% = سقف/تخصيص محدود لكل كلية، مش حجز مضمون لكل متفوق (الضمان الوحيد: مقعد واحد على الأقل لكل شهادة).</div></div><div class="kf"><div class="kf-n">5</div><div class="kf-t">القبول جوّه الـ5% بالترتيب التنازلي للمجموع → المنافسة بين طلاب المعادلة نفسهم على مقاعد قليلة.</div></div><div class="kf"><div class="kf-n">6</div><div class="kf-t">الحد الأدنى للطب الحكومي بالدبلومة 2025 ≈ 120-122.5 من 130 (~92%+)؛ ناس بتقول 1560+ EST لطب القاهرة. المجموع العالي بيقلّل الخطر بس مبيضمنش.</div></div><div class="kf"><div class="kf-n">7</div><div class="kf-t">الأزمة معترف بيها رسميًا: مطالبات نيابية 2025/2026 برفع الكوتة من 5% لـ 10%.</div></div></div>
+        </section>
+  <section class="toc"><h2 class="sec">المحتويات</h2><div class="toc-row"><a href="#sec-verdict"><span class="toc-n">1</span><span class="toc-t">الخلاصة القاطعة الأول</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#sec-sat-history"><span class="toc-n">2</span><span class="toc-t">السؤال 1: قصة SAT في مصر بالتواريخ</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#sec-sat-accepted"><span class="toc-n">3</span><span class="toc-t">السؤال 1: هل الحكومي بيقبل SAT؟</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#sec-quota"><span class="toc-n">4</span><span class="toc-t">السؤال 2: آلية الكوتة 5% بالتفصيل</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#sec-medicine-numbers"><span class="toc-n">5</span><span class="toc-t">السؤال 2: طب حكومي بالأرقام</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#sec-guarantee"><span class="toc-n">6</span><span class="toc-t">السؤال 2: هل الدرجة شبه الكاملة بتضمن؟</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#sec-theoretical-practical"><span class="toc-n">7</span><span class="toc-t">الفرق الجوهري: نظري (سهل) vs قمة (شرس)</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#sec-voices"><span class="toc-n">8</span><span class="toc-t">أصوات حقيقية من الطلاب</span></a><span class="toc-dots"></span></div><div class="toc-row"><a href="#sec-final"><span class="toc-n">9</span><span class="toc-t">الحكم النهائي المختصر</span></a><span class="toc-dots"></span></div></section>
+  <section class="rsec"><h2 class="sec" id="sec-verdict"><span class="sn">1</span>الخلاصة القاطعة الأول</h2>
+<div class="callout callout-key"><span class="ci">🔑</span><div><strong>السؤال 1 — SAT جوّه مصر:</strong> آه، دلوقتي تقدر تمتحن SAT جوّه مصر (رجع يونيو 2025) ومقبول للحكومي. مقولة 'ممنوع في مصر' كانت صح 2020-2024 بس، دلوقتي مش صحيحة.</div></div>
+<div class="callout callout-warn"><span class="ci">⚠️</span><div><strong>السؤال 2 — المجموع العالي:</strong> الادعاء صح بس بتصحيح مهم — الرفض حقيقي في كليات القمة، <strong>بس مش لأن الدرجة بتتجاهل</strong>. السبب المقاعد محدودة بـ5% والقبول بالترتيب التنازلي. الجملة الصح: 'مش أي مجموع عالي بيدخل طب حكومي' — مش 'المجموع العالي ملهوش قيمة'.</div></div>
+<div class="stats"><div class="stat"><div class="stat-v">يونيو 2025</div><div class="stat-l">رجوع SAT رسميًا لمصر</div></div><div class="stat"><div class="stat-v">5%</div><div class="stat-l">كوتة المقاعد لطلاب المعادلة</div></div><div class="stat"><div class="stat-v">~92%+</div><div class="stat-l">الحد الأدنى للطب الحكومي بالدبلومة</div></div><div class="stat"><div class="stat-v">1560+</div><div class="stat-l">EST المطلوب لطب القاهرة (كلام طلاب)</div></div></div></section>
+<section class="rsec"><h2 class="sec" id="sec-sat-history"><span class="sn">2</span>السؤال 1: قصة SAT في مصر بالتواريخ</h2>
+<p>عشان تفهم الصورة صح، لازم تعرف إن SAT مرّ بمراحل — والمقولة الشائعة اتبنت على مرحلة <strong>التوقف</strong> اللي انتهت خلاص:</p>
+<div class="tbl-wrap"><table><thead><tr><th>التاريخ</th><th>الحدث</th></tr></thead><tbody><tr><td>2016</td><td>College Board ألغى نتائج امتحان أكتوبر في مصر بسبب تسريب الأسئلة — طلاب رفعوا قضية</td></tr><tr><td>سبتمبر 2020</td><td>إيقاف SAT بالكامل جوّه مصر لأسباب أمنية (تسريبات متكررة)</td></tr><tr><td>2021</td><td>الوزارة أوقفت الاعتراف بنتائج SAT للقبول الجامعي</td></tr><tr><td>2020-2024</td><td>فترة التوقف (4 سنين) — الناس بتسافر دول مجاورة عشان تمتحنه، وEST بقى البديل</td></tr><tr><td>ديسمبر 2024</td><td>الوزارة أعلنت نية إعادة SAT</td></tr><tr><td>يونيو 2025</td><td>SAT رجع رسميًا (Digital SAT) في مراكز اختبار — أكّدته السفارة الأمريكية + College Board</td></tr></tbody></table><div class="tcap">الجدول الزمني لـ SAT في مصر</div></div>
+<blockquote>بعد توقف دام 4 سنين، الـ SAT هيرجع لمصر ابتداءً من يونيو 2025، حسب وزير التربية والتعليم محمد عبداللطيف.<div class="qcite">— Al-Ahram Weekly — مايو 2025</div></blockquote>
+<blockquote>College Board هيبدأ تقديم الـ Digital SAT في مصر ابتداءً من امتحان يونيو 2025، في مراكز اختبار نهاية الأسبوع اللي كتير منها كان بيقدّم النسخة الورقية قبل كده.<div class="qcite">— السفارة الأمريكية بالقاهرة (مصدر رسمي)</div></blockquote>
+<div class="callout callout-info"><span class="ci">ℹ️</span><div>ليه الناس فاكرة إنه ممنوع؟ لأن الـ EST اتعمل أصلًا سنة 2020 <strong>كبديل</strong> للـ SAT المتوقف، وخدم ~60 ألف طالب دبلومة. فطول 4 سنين كان فعلًا 'لازم EST'. دلوقتي الوضع اتغيّر.</div></div></section>
+<section class="rsec"><h2 class="sec" id="sec-sat-accepted"><span class="sn">3</span>السؤال 1: هل الحكومي بيقبل SAT؟</h2>
+<p><strong>آه، ودي نقطة كتير ناس بتغلط فيها.</strong> القاعدة الرسمية للمجلس الأعلى للجامعات بتقبل <strong>3 امتحانات</strong> للشهادات المعادلة:</p>
+<ul class="rl"><li><strong>SAT</strong> — وهو الأساس اللي بيتحوّل عليه الكل لحساب المجموع الاعتباري.</li><li><strong>EST</strong> — النسخة المصرية، بتتحوّل لجدول درجات SAT عشان تتحسب.</li><li><strong>ACT</strong> — مقبول رسميًا لكن قبوله أضيق/محدود عمليًا.</li></ul>
+<blockquote>يتم الأخذ بجداول درجات الـ SAT كأساس عند احتساب المجموع الاعتباري لطلاب الثانوية الأمريكية المعادلة للالتحاق بالجامعات والمعاهد المصرية (الحكومية والخاصة)، مع تحقيق الشروط في SAT أو ACT أو EST بالإضافة إلى الـ GPA.<div class="qcite">— قواعد المجلس الأعلى للجامعات</div></blockquote>
+<div class="callout callout-tip"><span class="ci">💡</span><div><strong>مسألة 'داخل ولا خارج مصر':</strong> خلال فترة التوقف، المجلس سمح باحتساب SAT اللي اتعمل <strong>بره مصر</strong>. دلوقتي (يونيو 2025+) بقى متاح جوّه مصر برضه. فالمسألة مش 'ممنوع' — المسألة إنه كان متوقف مؤقتًا ورجع.</div></div>
+<div class="callout callout-warn"><span class="ci">⚠️</span><div>نصيحة تحقّق قبل ما تسجّل: افتح موقع College Board (Test Center Search) وحدّد 'Egypt' عشان تشوف المراكز والمواعيد المتاحة فعليًا لموعدك — العدد بيتغير من إدارة اختبار للتانية.</div></div></section>
+<section class="rsec"><h2 class="sec" id="sec-quota"><span class="sn">4</span>السؤال 2: آلية الكوتة 5% بالتفصيل</h2>
+<p>دي النقطة اللي بتفسّر ليه المجموع العالي مش بيضمن الحكومي. القاعدة الرسمية بتقول:</p>
+<blockquote>تُحدَّد الأماكن المخصصة لطلاب الشهادات الثانوية الأجنبية المعادلة بنسبة 5% من الأعداد المقرر قبولها من بين حملة الثانوية العامة المصرية في كل كلية أو معهد.<div class="qcite">— المجلس الأعلى للجامعات</div></blockquote>
+<h2 class="sec">يعني إيه بالظبط؟</h2>
+<ol class="rl"><li>الـ5% = <strong>سقف وتخصيص في آن واحد</strong> — بيتحسب 5% من سعة كل كلية، وده الحد الأقصى لطلاب المعادلة، مش بيزيد.</li><li>الضمان الوحيد: <strong>'مكان واحد على الأقل لكل شهادة أجنبية في كل كلية'</strong> — يعني مقعد واحد مضمون لنوع الشهادة، مش لكل صاحب درجة عالية.</li><li>طلاب المعادلة <strong>معزولين في بوابة منفصلة</strong> (مكتب تنسيق منفصل، حدود دنيا منفصلة). إنت مش بتاخد من مقاعد الثانوية العامة، وهما مش بياخدوا منك.</li><li><strong>المنافسة مقفولة جواكم انتوا الـ5%</strong> — يعني بتتنافس مع طلاب الدبلومة التانيين بس.</li></ol>
+<h2 class="sec">القبول جوّه الـ5% إزاي؟</h2>
+<blockquote>تكون الأفضلية وفقًا للمجموع الأعلى.<div class="qcite">— موقع مجلس الجامعات الرسمي (cnu.mohesr.gov.eg)</div></blockquote>
+<p>يعني: الطلاب اللي عدّوا الحد الأدنى بيترتّبوا <strong>تنازليًا حسب المجموع</strong>، والكمبيوتر بيوزّع على الرغبات من الأعلى للأقل <strong>لحد ما مقاعد الـ5% تخلص</strong>. بمجرد ما تمتلئ → الكلية بتقفل، وأي طالب بعد كده (حتى لو مجموعه محترم) بيروح لرغبته اللي بعدها.</p></section>
+<section class="rsec"><h2 class="sec" id="sec-medicine-numbers"><span class="sn">5</span>السؤال 2: طب حكومي بالأرقام</h2>
+<p>الحدود الدنيا الرسمية للدبلومة الأمريكية لتنسيق 2025 (من بوابة الحكومة + شبابيك) — لاحظ إنها <strong>بتلامس السقف تقريبًا</strong>:</p>
+<div class="tbl-wrap"><table><thead><tr><th>الكلية</th><th>الحد الأدنى</th></tr></thead><tbody><tr><td>طب أسنان الإسكندرية</td><td>122.27</td></tr><tr><td>طب فاقوس</td><td>120.36</td></tr><tr><td>طب دمياط</td><td>120.28</td></tr><tr><td>طب كفر الشيخ</td><td>120.25</td></tr><tr><td>طب السويس</td><td>120.32</td></tr><tr><td>طب قصر العيني وعين شمس</td><td>أعلى من دول (بيتصدروا القائمة)</td></tr></tbody></table><div class="tcap">الحد الأدنى للدبلومة الأمريكية 2025 (من ~130)</div></div>
+<div class="callout callout-stat"><span class="ci">📊</span><div>الحد الأدنى للطب بيلامس <strong>فوق 120 من 130 (~92%+)</strong>. ده معناه: عدد مقاعد الطب للمعادلة صغير جدًا (5% من سعة محدودة أصلًا)، وعدد المتقدمين بيزيد كل سنة → الحد الأدنى بيطلع لفوق سنة ورا سنة.</div></div>
+<p><strong>النتيجة العملية:</strong> طالب جايب درجة 'كويسة جدًا' بس مش من الطبقة الأعلى مطلقًا → بيتشال من طب حكومي ويروح لصيدلة/علاج طبيعي/أسنان في محافظة أبعد، أو للجامعات الخاصة/الأهلية.</p>
+<div class="callout callout-warn"><span class="ci">⚠️</span><div><strong>الأزمة معترف بيها رسميًا:</strong> في يناير 2026، الاتحاد العام للمصريين بالخارج ونواب في مجلس النواب قدّموا طلبات إحاطة بيشتكوا من 'أزمة قبول' ومطالبين برفع الكوتة من 5% لـ 10%. لو مفيش رفض لأصحاب الدرجات، مكانش فيه أزمة أصلًا.</div></div></section>
+<section class="rsec"><h2 class="sec" id="sec-guarantee"><span class="sn">6</span>السؤال 2: هل الدرجة شبه الكاملة بتضمن؟</h2>
+<div class="callout callout-key"><span class="ci">🔑</span><div>❌ <strong>لأ، مبتضمنش</strong> — بتزوّد فرصتك جدًا بس مفيش 'ضمان مطلق'. المقعد بيروح للأعلى، والأعلى بيتحدد بعدد المتقدمين السنة دي.</div></div>
+<ul class="rl"><li>الضمان الرسمي الوحيد = 'مكان واحد على الأقل لكل شهادة في الكلية' — مش مكان لكل متفوق.</li><li>طالما الترتيب تنازلي والمقاعد 5% بس، حتى لو إنت من الأعلى ممكن رغبتك الأولى (قصر العيني مثلًا) تكون خلصت → تنزل لرغبة أدنى.</li><li><strong>الرغبات بتلعب دور:</strong> لو رتبت رغباتك غلط أو كلها كليات قمة، ممكن تطلع من التنسيق الحكومي كله.</li></ul>
+<blockquote>لو عايز طب حكومي في القاهرة، محتاج تجيب 1560+ في EST I عشان تكون في المنطقة الآمنة.<div class="qcite">— نصيحة طالب على Reddit r/EST_Test</div></blockquote>
+<blockquote>التنسيق المصري بمتطلباته للدرجات غير واقعية بالمرة.<div class="qcite">— طالب دبلومة على Reddit r/EST_Test</div></blockquote>
+<p>لاحظ: حتى 1500-1540 (اللي بتدخّلك أعرق جامعات أمريكا) ممكن <strong>متكفّيش</strong> لطب القاهرة الحكومي. ده جوهر إحساس 'المجموع العالي مش ضامن'.</p></section>
+<section class="rsec"><h2 class="sec" id="sec-theoretical-practical"><span class="sn">7</span>الفرق الجوهري: نظري (سهل) vs قمة (شرس)</h2>
+<p>ده أهم تمييز لازم تفهمه — الرفض بيحصل في نوع معيّن من الكليات بس:</p>
+<div class="tbl-wrap"><table><thead><tr><th>النوع</th><th>الكوتة 5%</th><th>الحد الأدنى</th><th>الرفض بيحصل؟</th></tr></thead><tbody><tr><td>نظرية (تجارة/آداب/حقوق/إعلام)</td><td>أكبر بالعدد المطلق (سعة كبيرة)</td><td>منخفض</td><td>نادرًا — الدرجة العالية بتدخل بسهولة</td></tr><tr><td>عملية/قمة (طب/أسنان/هندسة/صيدلة)</td><td>رقم صغير جدًا</td><td>قريب من السقف</td><td>أيوه — بيحصل رفض فعلي</td></tr></tbody></table><div class="tcap">الكليات النظرية مقابل العملية/القمة</div></div>
+<div class="callout callout-tip"><span class="ci">💡</span><div>الجملة الصح: <strong>'مش أي درجة عالية بتدخل طب حكومي'</strong> — مش 'الدرجة العالية ملهاش قيمة'. في النظري الدرجة العالية شبه مضمونة؛ في القمة (طب/هندسة) شرس وبيحصل رفض.</div></div></section>
+<section class="rsec"><h2 class="sec" id="sec-voices"><span class="sn">8</span>أصوات حقيقية من الطلاب</h2>
+<div class="callout callout-info"><span class="ci">ℹ️</span><div>أصوات حقيقية من ريديت (r/Egypt, r/EST_Test) ومصادر موثّقة — معاد صياغتها بأمانة.</div></div>
+<h2 class="sec">عن SAT جوّه مصر</h2>
+<p>مفيش ولا صوت واحد بيقول 'أنا امتحنت SAT جوّه مصر في السنين اللي فاتت ودخلت بيه' — العكس، كلهم اتّجهوا للـ EST خلال فترة التوقف. حتى طالب عنده SAT II بـ 1570 كان بيسأل عن <strong>درجة الـ EST</strong> المطلوبة للطب الحكومي (لأن SAT مكانش متاح للقبول وقتها).</p>
+<h2 class="sec">عن المجموع العالي والرفض</h2>
+<p>مفيش قصة first-person صريحة 'جبت 1580 واترفضت'، لكن فيه <strong>إجماع وإحباط</strong> إن العتبة عالية جدًا و'غير واقعية'. في المقابل، ناس أكّدت إنهم <strong>دخلوا</strong> طب حكومي بالـ EST طالما وصلوا العتبة العالية:</p>
+<blockquote>الطب في الجامعات الحكومية المصرية كله تقريبًا نفس المستوى — إنت بس محتاج توصل الحد الأدنى لأي كلية طب حكومي.<div class="qcite">— Reddit r/EST_Test</div></blockquote>
+<div class="callout callout-info"><span class="ci">ℹ️</span><div>أمانة منهجية: القصص الـfirst-person بصيغة 'أنا شخصيًا جبت X ودخلت/اترفضت' محدودة على المنصات العامة — أقوى الأصوات كانت تعبير عن الخوف من العتبة العالية + تأكيد إن الوصول للعتبة بيدخّل فعلًا.</div></div></section>
+<section class="rsec"><h2 class="sec" id="sec-final"><span class="sn">9</span>الحكم النهائي المختصر</h2>
+<div class="tbl-wrap"><table><thead><tr><th>السؤال</th><th>الإجابة الموثّقة</th></tr></thead><tbody><tr><td>فيه ناس بتمتحن SAT جوّه مصر؟</td><td>آه دلوقتي — رجع يونيو 2025 (كان متوقف 2020-2024)</td></tr><tr><td>SAT بيتقبل للحكومي؟</td><td>آه رسميًا — أساس المجموع الاعتباري</td></tr><tr><td>EST هو الوحيد؟</td><td>لأ — SAT + EST + ACT كلهم معتمدين</td></tr><tr><td>كل مجموع عالي بيدخل حكومي؟</td><td>لأ — كليات القمة بيحصل فيها رفض بسبب كوتة 5%</td></tr><tr><td>الدرجة شبه الكاملة بتضمن؟</td><td>لأ — بتقلّل الخطر بس مفيش ضمان مطلق</td></tr><tr><td>الرفض لأن الدرجة بتتجاهل؟</td><td>لأ — الدرجة شرط ضروري، بس المقاعد بتخلص في الأعلى منك</td></tr></tbody></table><div class="tcap">ملخص الإجابتين</div></div>
+<div class="callout callout-key"><span class="ci">🔑</span><div>الخلاصة: <strong>(1)</strong> SAT رجع جوّه مصر ومقبول للحكومي — المقولة القديمة اتغيّرت. <strong>(2)</strong> المجموع العالي شرط ضروري مش كافٍ لكليات القمة الحكومية — الرفض حقيقي بسبب الكوتة 5% والترتيب التنازلي، مش بسبب تجاهل الدرجة. في الكليات النظرية الدرجة العالية شبه مضمونة.</div></div></section>
+  <section class="sources"><h2 class="sec">المصادر والمراجع</h2><div class="src"><div class="src-n">[1]</div><div class="src-b"><div class="src-t">SAT is back — رجوع SAT لمصر يونيو 2025</div><div class="src-u">https://english.ahram.org.eg/NewsContent/50/1201/546632/AlAhram-Weekly/Egypt/SAT-is-back.aspx</div><div class="src-m">Al-Ahram Weekly · 2025-05</div></div></div><div class="src"><div class="src-n">[2]</div><div class="src-b"><div class="src-t">SAT Testing Resumes in Egypt (تأكيد رسمي)</div><div class="src-u">https://eg.usembassy.gov/sat-testing-resumes-in-egypt/</div><div class="src-m">السفارة الأمريكية بالقاهرة · 2025-05</div></div></div><div class="src"><div class="src-n">[3]</div><div class="src-b"><div class="src-t">Egypt to reintroduce SAT after 4-year hiatus</div><div class="src-u">https://english.ahram.org.eg/NewsContent/1/2/536469/Egypt/Society/Egypt-to-reintroduce-SAT-for-American-Diploma-stud.aspx</div><div class="src-m">Ahram Online · 2024-12</div></div></div><div class="src"><div class="src-n">[4]</div><div class="src-b"><div class="src-t">College Board cancels scores from Egypt test (تسريبات)</div><div class="src-u">https://www.applerouth.com/blog/college-board-cancels-scores-from-october-test-in-egypt-and-hong-kong-citing-test-leaks</div><div class="src-m">Applerouth · 2016</div></div></div><div class="src"><div class="src-n">[5]</div><div class="src-b"><div class="src-t">SAT Test Returns to Egypt (Digital, يونيو 2025)</div><div class="src-u">https://iaqaba.com/sat-testing-resumes-egypt-college-board-digital-june-2025/</div><div class="src-m">iAqaba · 2025-05</div></div></div><div class="src"><div class="src-n">[6]</div><div class="src-b"><div class="src-t">SAT exams return after 4-year hiatus (EST بديل ~60k طالب)</div><div class="src-u">https://enterpriseam.com/egypt/blackboards/sat-exams-return-to-egypt-after-a-four-year-hiatus-boosting-demand-for-intl-schools/</div><div class="src-m">Enterprise · 2025</div></div></div><div class="src"><div class="src-n">[7]</div><div class="src-b"><div class="src-t">الثانوية الأجنبية المعادلة — قاعدة الأفضلية بالمجموع الأعلى</div><div class="src-u">https://cnu.mohesr.gov.eg/acceptance/</div><div class="src-m">مجلس الجامعات الأهلية الرسمي · 2025</div></div></div><div class="src"><div class="src-n">[8]</div><div class="src-b"><div class="src-t">تنسيق الشهادات المعادلة 2025 — كوتة 5%</div><div class="src-u">https://www.dostor.org/5122278</div><div class="src-m">الدستور · 2025</div></div></div><div class="src"><div class="src-n">[9]</div><div class="src-b"><div class="src-t">قاعدة 5% + مكان واحد على الأقل لكل شهادة</div><div class="src-u">https://www.shorouknews.com/</div><div class="src-m">الشروق · 2025</div></div></div><div class="src"><div class="src-n">[10]</div><div class="src-b"><div class="src-t">الحد الأدنى للدبلومة الأمريكية 2025 (طب)</div><div class="src-u">https://shbabbek.com/show/258427</div><div class="src-m">شبابيك · 2025</div></div></div><div class="src"><div class="src-n">[11]</div><div class="src-b"><div class="src-t">بوابة التنسيق — الحدود الدنيا للشهادات المعادلة 2025</div><div class="src-u">https://tansik.digital.gov.eg/application/Certificates/Mo3adla/DefaultFFtansik.aspx</div><div class="src-m">بوابة الحكومة المصرية · 2025</div></div></div><div class="src"><div class="src-n">[12]</div><div class="src-b"><div class="src-t">مطالبات نيابية برفع الكوتة لـ10% (يناير 2026)</div><div class="src-u">https://www.vetogate.com/5580831</div><div class="src-m">فيتو · 2026-01</div></div></div><div class="src"><div class="src-n">[13]</div><div class="src-b"><div class="src-t">درجة EST المطلوبة لطب حكومي (نقاش طلاب)</div><div class="src-u">https://www.reddit.com/r/EST_Test/comments/tkwou0/</div><div class="src-m">Reddit r/EST_Test · 2022</div></div></div><div class="src"><div class="src-n">[14]</div><div class="src-b"><div class="src-t">توضيح الوزير: EST متاح للحكومي في غياب SAT</div><div class="src-u">https://www.mahttmsr.com/67218</div><div class="src-m">محطة مصر · 2024</div></div></div></section>
+  <div id="progress"></div><button id="themebtn" title="Theme">☀️ فاتح / 🌙 غامق</button><button id="totop" title="أعلى">↑</button><script>const p=document.getElementById("progress");const b=document.getElementById("totop");const tb=document.getElementById("themebtn");const root=document.documentElement;if(localStorage.getItem("rtheme")=="alt")root.setAttribute("data-theme","alt");tb.onclick=()=>{const on=root.getAttribute("data-theme")=="alt";if(on){root.removeAttribute("data-theme");localStorage.setItem("rtheme","base");}else{root.setAttribute("data-theme","alt");localStorage.setItem("rtheme","alt");}};addEventListener("scroll",()=>{const h=document.documentElement;const sc=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;p.style.width=sc+"%";b.style.display=h.scrollTop>400?"flex":"none";});b.onclick=()=>scrollTo({top:0,behavior:"smooth"});</script>
+</body></html>
